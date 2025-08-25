@@ -1,0 +1,378 @@
+﻿<!-- ===================== BLOG LISTING PAGE ===================== -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Travel Blog | Wanderlust</title>
+    <meta name="description" content="Travel inspiration, tips, and hidden gems worldwide.">
+    <meta property="og:title" content="Wanderlust Travel Blog">
+    <meta property="og:description" content="Discover destinations, tips, and hidden gems.">
+    <meta property="og:image" content="images/preview.jpg">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        /* Sidebar Category Links */
+        .list-group-item a {
+            color: #000;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+            .list-group-item a:hover {
+                color: #555;
+                padding-left: 5px;
+            }
+
+        body {
+            background: #f8f9fa;
+            font-family: 'Segoe UI', sans-serif;
+            color: #212529;
+        }
+
+        .navbar {
+            background: #000;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            color: #fff !important;
+        }
+
+        .nav-link {
+            color: #ddd !important;
+            margin-left: 1rem;
+        }
+
+            .nav-link:hover {
+                color: #fff !important;
+            }
+
+        /* Hero */
+        header.blog-hero {
+            background: url('images/blog-hero.jpg') center/cover no-repeat;
+            background-attachment: fixed;
+            position: relative;
+            color: #fff;
+            text-align: center;
+            padding: 6rem 1rem;
+        }
+
+            header.blog-hero::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.55);
+            }
+
+            header.blog-hero .content {
+                position: relative;
+                z-index: 2;
+            }
+
+        /* Mini Thumbnail Cards */
+        .mini-card {
+            display: flex;
+            gap: 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 10px;
+            background: #fff;
+            margin-bottom: 20px;
+            transition: transform .3s;
+            align-items: center;
+        }
+
+            .mini-card:hover {
+                transform: translateY(-3px);
+            }
+
+            .mini-card img {
+                width: 160px;
+                height: 110px;
+                object-fit: cover;
+                border-radius: 4px;
+            }
+
+            .mini-card h5 {
+                font-size: 1.1rem;
+                font-weight: 600;
+                margin-bottom: .3rem;
+            }
+
+            .mini-card p {
+                font-size: .9rem;
+            }
+
+            .mini-card .text-muted {
+                font-size: .8rem;
+            }
+
+        /* Featured Tag */
+        .featured-wrapper {
+            position: relative;
+        }
+
+        .featured-tag {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(0,0,0,0.7);
+            color: #fff;
+            padding: 4px 10px;
+            font-size: .8rem;
+            border-radius: 4px;
+        }
+
+        /* Sidebar */
+        .sidebar-box {
+            background: #fff;
+            border: 1px solid #ddd;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+            .sidebar-box h5 {
+                font-weight: bold;
+                margin-bottom: 1rem;
+                color: #111;
+            }
+
+        .newsletter input {
+            border: 1px solid #000;
+            border-radius: 0;
+        }
+
+        .newsletter button {
+            background: #000;
+            color: #fff;
+            border: none;
+            width: 100%;
+        }
+
+        /* Pagination */
+        .pagination .page-link {
+            color: #000;
+            border: none;
+        }
+
+        .pagination .active .page-link {
+            background: #000;
+            color: #fff;
+            border-radius: 50%;
+        }
+
+        footer {
+            background: #000;
+            color: #aaa;
+        }
+
+        /* Modern Links */
+        a {
+            color: #000;
+            text-decoration: none;
+            position: relative;
+            transition: color .3s ease;
+            font-weight: 700;
+        }
+
+            a::after {
+                content: "";
+                position: absolute;
+                left: 0;
+                bottom: -2px;
+                width: 0;
+                height: 2px;
+                background: #000;
+                transition: width .3s ease;
+            }
+
+            a:hover {
+                color: #111;
+            }
+
+                a:hover::after {
+                    width: 100%;
+                }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-airplane me-2 text-white" viewBox="0 0 16 16">
+                <path d="M6.428 1.151C6.987.418 8.01.418 8.57 1.151L15.5 10.5H10L8 16 6 10.5H.5l5.928-9.349z" />
+            </svg>
+            <a class="navbar-brand" href="index.html">Wanderlust</a>
+            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navMenu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#categories">Categories</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#recent">Recent</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="blog-hero mt-5">
+        <div class="content">
+            <h1 class="display-4 fw-bold">Wanderlust Blog</h1>
+            <p class="lead">Black & White Travel Inspiration, Stories & Tips</p>
+        </div>
+    </header>
+
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <!-- Posts -->
+                <div class="col-md-8">
+
+                    <!-- Featured Post -->
+                    <div class="mini-card featured-wrapper mb-4">
+                        <div class="featured-tag">Featured</div>
+                        <img src="images/featured.jpg" alt="Ultimate Guide to Europe 2025" loading="lazy">
+                        <div>
+                            <h5>Ultimate Guide to Europe 2025</h5>
+                            <p class="text-muted">Apr 2025 • 7 min read • by Wanderlust Team</p>
+                            <p>Discover the best itineraries, hidden spots, and budget hacks for your next Euro trip.</p>
+                            <a href="post.html">Read More →</a>
+                        </div>
+                    </div>
+
+                    <!-- All Mini Cards -->
+                    <div class="mini-card europe">
+                        <img src="images/blog1.jpg" alt="Top 10 European Destinations" loading="lazy">
+                        <div>
+                            <h5>Top 10 European Destinations</h5>
+                            <p class="text-muted">Jan 2025 • 5 min read</p>
+                            <p>Paris, Rome, Barcelona... must-visit cities this year.</p>
+                            <a href="post.html">Read More →</a>
+                        </div>
+                    </div>
+
+                    <div class="mini-card budget">
+                        <img src="images/blog2.jpg" alt="Budget Travel Hacks" loading="lazy">
+                        <div>
+                            <h5>Budget Travel Hacks</h5>
+                            <p class="text-muted">Feb 2025 • 4 min read</p>
+                            <p>Save money on flights, food, and accommodation.</p>
+                            <a href="post.html">Read More →</a>
+                        </div>
+                    </div>
+
+                    <div class="mini-card asia adventure">
+                        <img src="images/blog3.jpg" alt="Hidden Gems of Asia" loading="lazy">
+                        <div>
+                            <h5>Hidden Gems of Asia</h5>
+                            <p class="text-muted">Mar 2025 • 6 min read</p>
+                            <p>Explore offbeat villages and scenic beaches.</p>
+                            <a href="post.html">Read More →</a>
+                        </div>
+                    </div>
+
+                    <div class="mini-card adventure">
+                        <img src="images/patagonia.webp" alt="Adventure in Patagonia" loading="lazy">
+                        <div>
+                            <h5>Adventure in Patagonia</h5>
+                            <p class="text-muted">Mar 2025 • 5 min read</p>
+                            <p>Trekking, glaciers, and epic landscapes await in Patagonia.</p>
+                            <a href="post.html">Read More →</a>
+                        </div>
+                    </div>
+
+                    <!-- Pagination -->
+                    <nav class="mt-4">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item disabled"><a class="page-link">Prev</a></li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="col-md-4">
+                    <div class="sidebar-box">
+                        <h5>🔍 Search</h5>
+                        <input type="text" class="form-control" placeholder="Search blog...">
+                    </div>
+                    <div class="sidebar-box" id="categories">
+                        <h5>📂 Categories</h5>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item px-0 border-0"><a href="#">Europe</a></li>
+                            <li class="list-group-item px-0 border-0"><a href="#">Budget</a></li>
+                            <li class="list-group-item px-0 border-0"><a href="#">Asia</a></li>
+                            <li class="list-group-item px-0 border-0"><a href="#">Adventure</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="sidebar-box">
+                        <h5>📰 Recent Posts</h5>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item px-0 border-0"><a href="#">How to Plan a Road Trip</a></li>
+                            <li class="list-group-item px-0 border-0"><a href="#">Top Honeymoon Destinations</a></li>
+                            <li class="list-group-item px-0 border-0"><a href="#">Solo Travel Tips</a></li>
+                        </ul>
+                    </div>
+                    <div class="sidebar-box">
+                        <h5>🔥 Trending Posts</h5>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item px-0 border-0"><a href="#">Best Beaches in Greece</a></li>
+                            <li class="list-group-item px-0 border-0"><a href="#">Backpacking India</a></li>
+                        </ul>
+                    </div>
+                    <div class="sidebar-box newsletter">
+                        <h5>📩 Subscribe</h5>
+                        <input type="email" class="form-control form-control-sm mb-2 rounded-pill p-2" placeholder="Your Email">
+                        <button class="btn btn-dark w-100 rounded-pill p-2">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light text-center py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <h5>Wanderlust</h5>
+                    <p>Making your travel dreams come true since 2010.</p>
+                </div>
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <h5>Contact Info</h5>
+                    <p><i class="fas fa-phone me-2"></i> +1 (555) 123-4567</p>
+                    <p><i class="fas fa-envelope me-2"></i> info@wanderlust.com</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Follow Us</h5>
+                    <div class="d-flex justify-content-center">
+                        <a href="#" class="text-light me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-light me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-light me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-light"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <p class="mb-0">&copy; 2025 Wanderlust Travel Agency. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
